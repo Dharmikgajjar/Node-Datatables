@@ -10,7 +10,7 @@ const sign = (id) =>
 router.post('/register', async (req, res, next) => {
   try {
     const { name, email, password, address, phone } = req.body;
-    const user = await User.create({ name, email, password, address, phone }); // role always "customer"
+    const user = await User.create({ name, email, password, address, phone });
     res.status(201).json({
       token: sign(user._id),
       user: { id: user._id, name: user.name, email: user.email, role: user.role },
